@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+<head>
+	<title>P.rogressive I.mage L.oad Examples</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="P.rogressive I.mage L.oad Examples" />
+	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
+	<meta name="robots" content="index, follow" />
+
+	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
+
+	<!-- Whatever you do, do it with style -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	<link rel="stylesheet" href="css/main.css" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.pil.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var $wn = $('window'),
+				bieber = '/imgs/dean_boyers_favorites/justin-bieber.jpg',
+				kesha = '/imgs/dean_boyers_favorites/kesha.jpg',
+				swift = '/imgs/dean_boyers_favorites/taylor-swift.jpg',
+				$bieber = $('#bieberriffic'),
+				$kesha = $('#crouching-tiger-hidden-kesha'),
+				$swift = $('#she-tailors-swiftly');
+			
+			$.pil([	bieber, kesha, swift ]);
+			
+			$wn.bind('pil::imagesLoadComplete', function(e){
+				$bieber.html(bieber);
+				$kesha.html(kesha);
+				$swift.html(swift);
+				alert('images loaded.');
+			});
+			
+		});
+		
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>Basic single array</h1>
+		
+		<ul>
+			<li id="bieberriffic"></li>
+			<li id="crouching-tiger-hidden-kesha"></li>
+			<li id="she-tailors-swiftly"></li>
+		</ul>
+
+		
+	</div>
+	
+</body>
+</html>

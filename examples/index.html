@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+<head>
+	<title>P.rogressive I.mage L.oad Examples</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="P.rogressive I.mage L.oad Examples" />
+	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
+	<meta name="robots" content="index, follow" />
+
+	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
+
+	<!-- Whatever you do, do it with style -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	<link rel="stylesheet" href="css/main.css" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.pil.js"></script>
+	<script type="text/javascript" src="js/examples.js"></script>
+	
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>P.rogressive I.mage L.oad Examples</h1>
+		
+		<h2>1. Basic Progressive Image Load (single array)</h2>
+		<p class="note">This will walk you through a very basic p.i.l. example. With images passed as an array.</p>
+		<code>$.pil(['img1.jpg', 'img2.jpg', 'img3.jpg']);</code>
+		<p><a href="basic_single_array.html">Basic single array</a></p>
+		
+		<h2>2. Basic Progressive Image Load (single array w/ custom event)</h2>
+		<p class="note">This will walk you through a very basic p.i.l. example. With images passed as an array and a custom event.</p>
+		<code>$.pil(['img1.jpg', 'img2.jpg', 'img3.jpg'], 'name_of_event');</code>
+		<p><a href="basic_single_array_custom_event.html">Basic single array w/ custom event</a></p>
+
+		<h2>3. Basic Progressive Image Load (mutliple arrays)</h2>
+		<p class="note">Here we demonstrate how to load 'sets' of images. Each set will load and fire it's own event.</p>
+		<code>$.pil({<br/>
+			&nbsp;&nbsp;collections: [<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;['img1.jpg', 'img2.jpg', 'img3.jpg'],<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;['img4.jpg', 'img5.jpg', 'img6.jpg']<br/>
+			&nbsp;&nbsp;]<br/>
+		});</code>
+		<p><a href="basic_single_array_custom_event.html">Basic single array w/ custom event</a></p>
+		
+	</div>
+</body>
+</html>
