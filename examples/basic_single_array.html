@@ -24,21 +24,25 @@
 		$(document).ready(function(){
 
 			var $body = $('body'),
-				kesha = 'imgs/dean_boyers_favorites/kesha.jpg',
-				bieber = 'imgs/dean_boyers_favorites/justin-bieber.jpg',
-				swift = 'imgs/dean_boyers_favorites/taylor-swift.jpg',
-				$kesha = $('#crouching-tiger-hidden-kesha'),
-				$bieber = $('#bieberriffic'),
-				$swift = $('#she-tailors-swiftly');
+				f1 = 'imgs/waters/faces1.jpg',
+				f2 = 'imgs/waters/faces2.jpg',
+				fly = 'imgs/waters/flying.jpg',
+				f3 = 'imgs/waters/faces3.jpg',
+				$f1 = $('#f1'),
+				$f2 = $('#f2'),
+				$fly = $('#fly'),
+				$f3 = $('#f3');
 			
 			$body
 				.bind('pil::imagesLoadComplete', function(e, files){
-					$kesha.html('<img width=300 src="'+kesha+'" alt="Go Nashville, but meh" />');
-					$bieber.html('<img width=300 src="'+bieber+'" alt="meh" />');
-					$swift.html('<img width=300 src="'+swift+'" alt="meh" />');
+					$f1.html('<img src="'+f1+'" alt="watersports" />');
+					$f2.html('<img src="'+f2+'" alt="watersports" />');
+					$fly.html('<img src="'+fly+'" alt="watersports" />');
+					$f3.html('<img src="'+f3+'" alt="watersports" />');
+					
 					alert('images loaded.');
 				})
-				.pil([ bieber, kesha, swift ]);
+				.pil([ f1, f2, fly, f3 ]);
 						
 		});
 		
@@ -50,9 +54,11 @@
 		<h1>Basic single array</h1>
 		
 		<ul>
-			<li id="crouching-tiger-hidden-kesha"></li>
-			<li id="bieberriffic"></li>
-			<li id="she-tailors-swiftly"></li>
+			<li id="f1"></li>
+			<li id="f2"></li>
+			<li id="fly"></li>
+			<li id="f3"></li>
+			
 		</ul>
 
 		
