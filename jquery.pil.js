@@ -13,17 +13,19 @@
 		$body = $('body'),
 		$tmpCont = $('<div id="pil-tmp-container" style="display: none !important"/>'),
 		queue,
-		i = 0;
+		i = 0,
+		
+		DEFAULT_EVENT = 'pil::imagesLoadComplete';
 	
 	function _setQueue(a, b){
 		var queue = [],
-			e, i,
+			e, i, iArr = [],
 			colLen;
 		
 		switch(typeof a){ 
 			case 'object':
 				if(_isArray(a)){
-					e = (b !== undefined && typeof b == 'string') ? b : 'pil::imagesLoadComplete';
+					e = (b !== undefined && typeof b == 'string') ? b : DEFAULT_EVENT;
 					queue.push({files: a, completedEvent: e});
 				} else {
 					//we have a map, do map stuff...
@@ -32,7 +34,7 @@
 						
 						for(i=0; i<colLen; i++){
 							if(_isArray(a.collections[i])){
-								e = 'pil::imagesLoadComplete';
+								e = DEFAULT_EVENT;
 								queue.push({files: a.collections[i], completedEvent: e});
 							} else {
 								queue.push({files: a.collection[i].files, completedEvent: a.collection[i].completedEvent});
@@ -40,7 +42,16 @@
 						}
 						
 					} else {
-						_errors();
+						if($.contains(a, document.img)){
+							e = (b !== undefined && typeof b == 'string') ? b : DEFAULT_EVENT;
+							$.each($(a).find('img'), function(){
+								iArr.push($(this).attr('src'));
+							});
+							queue.push({files: iArr, completedEvent: e});
+						} else {
+							_erros();
+						}
+						
 					}
 				}
 				break;
