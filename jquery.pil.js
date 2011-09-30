@@ -12,46 +12,52 @@
 		$elem,
 		$body = $('body'),
 		$tmpCont = $('<div id="pil-tmp-container" style="display: none !important"/>'),
-		queue,
+		queue = [],
 		i = 0,
 		
 		DEFAULT_EVENT = 'pil::imagesLoadComplete';
 	
 	function _setQueue(a, b){
-		var queue = [],
-			e, i, iArr = [],
+		var i, iArr,
 			colLen;
 		
 		switch(typeof a){ 
 			case 'object':
+				
+				//if we're dealing w/ an array of imgs
 				if(_isArray(a)){
-					e = (b !== undefined && typeof b == 'string') ? b : DEFAULT_EVENT;
-					queue.push({files: a, completedEvent: e});
-				} else {
+					_addToQue(a, (b !== undefined && typeof b == 'string') ? b : DEFAULT_EVENT);
+				}
+				else {
+					
 					//we have a map, do map stuff...
 					if(typeof a.collections !== 'undefined' && _isArray(a.collections)){
 						colLen = a.collections.length;
 						
 						for(i=0; i<colLen; i++){
+							//array of imgs
 							if(_isArray(a.collections[i])){
-								e = DEFAULT_EVENT;
-								queue.push({files: a.collections[i], completedEvent: e});
-							} else {
-								queue.push({files: a.collection[i].files, completedEvent: a.collection[i].completedEvent});
+								_addToQue(a.collections[i], DEFAULT_EVENT);
+							} 
+							//jq parent
+							else if($.contains(a.collections[i].files, document.img)){
+								iArr = _internalArr($(a.collections[i].files).find('img'));
+								_addToQue(iArr, a.collection[i].completedEvent);
+							}
+							//formatted 1 to 1
+							else {
+								_addToQue(a.collections[i].files, a.collection[i].completedEvent);
 							}
 						}
 						
+					//if we have a single jq parent
 					} else {
 						if($.contains(a, document.img)){
-							e = (b !== undefined && typeof b == 'string') ? b : DEFAULT_EVENT;
-							$.each($(a).find('img'), function(){
-								iArr.push($(this).attr('src'));
-							});
-							queue.push({files: iArr, completedEvent: e});
+							iArr = _internalArr($(a).find('img'));
+							_addToQue(iArr, (b !== undefined && typeof b == 'string') ? b : DEFAULT_EVENT);
 						} else {
-							_erros();
+							_errors();
 						}
-						
 					}
 				}
 				break;
@@ -79,8 +85,20 @@
 
 	}
 	
+	function _addToQue(files, completedEvent){
+		queue.push({files: files, completedEvent: completedEvent});
+	}
+	
 	function _isArray(a){
 		return a.constructor == (new Array).constructor;
+	}
+	
+	function _internalArr($collection){
+		var iArr = [];
+		$.each($collection, function(){
+			iArr.push($(this).attr('src'));
+		});
+		return iArr;
 	}
 	
 	function _allTrues(obj){
