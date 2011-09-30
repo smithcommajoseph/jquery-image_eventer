@@ -38,14 +38,24 @@
 		<p><a href="basic_single_array_custom_event.html">Basic single array w/ custom event</a></p>
 
 		<h2>3. Basic Progressive Image Load (mutliple arrays)</h2>
-		<p class="note">Here we demonstrate how to load 'sets' of images. Each set will load and fire it's own event.</p>
+		<p class="note">Here we demonstrate how to load 'sets' of images. Each set will load and fire the default $.pil() loaded event.</p>
 		<code>$.pil({<br/>
 			&nbsp;&nbsp;collections: [<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;['img1.jpg', 'img2.jpg', 'img3.jpg'],<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;['img4.jpg', 'img5.jpg', 'img6.jpg']<br/>
 			&nbsp;&nbsp;]<br/>
 		});</code>
-		<p><a href="basic_single_array_custom_event.html">Basic single array w/ custom event</a></p>
+		<p><a href="basic_mult_array.html">Basic mult array</a></p>
+		
+		<h2>4. Basic Progressive Image Load (mutliple objects)</h2>
+		<p class="note">Here we demonstrate how to load 'sets' of images. Each set will load and fire it's own event custom event.</p>
+		<code>$.pil({<br/>
+			&nbsp;&nbsp;collections: [<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;{files: ['img1.jpg', 'img2.jpg', 'img3.jpg'], completedEvent: 'name_of_event1'},<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;{files: ['img4.jpg', 'img5.jpg', 'img6.jpg'], completedEvent: 'name_of_event2'}<br/>
+			&nbsp;&nbsp;]<br/>
+		});</code>
+		<p><a href="basic_mult_array_custome_event.html">Basic mult array w/ custom events</a></p>
 		
 	</div>
 </body>

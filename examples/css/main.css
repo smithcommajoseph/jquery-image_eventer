@@ -40,3 +40,10 @@ em {
 	font-weight: bold;
 }
 p.note{ margin-bottom:20px;}
+
+.left{ 
+	float: left;
+	}
+.right{ 
+	float: right;
+	}

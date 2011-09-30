@@ -24,21 +24,42 @@
 		$(document).ready(function(){
 
 			var $body = $('body'),
-				kesha = 'imgs/dean_boyers_favorites/kesha.jpg',
-				bieber = 'imgs/dean_boyers_favorites/justin-bieber.jpg',
-				swift = 'imgs/dean_boyers_favorites/taylor-swift.jpg',
-				$kesha = $('#crouching-tiger-hidden-kesha'),
-				$bieber = $('#bieberriffic'),
-				$swift = $('#she-tailors-swiftly');
+				accordion = 'imgs/holidays/accordion.jpg',
+				cycle = 'imgs/holidays/cycle.jpg',
+				gothing = 'imgs/holidays/gothing.jpg',
+				smoking1 = 'imgs/holidays/smoking1.jpg',
+				smoking2 = 'imgs/holidays/smoking2.jpg',
+				stalking = 'imgs/holidays/stalking.jpg',
+				treehats = 'imgs/holidays/treehats.jpg',
+				$left = $('.left'),
+				$right = $('.right');
+
 			
 			$body
 				.bind('pil::imagesLoadComplete', function(e, files){
-					$kesha.html('<img width=300 src="'+kesha+'" alt="Go Nashville, but meh" />');
-					$bieber.html('<img width=300 src="'+bieber+'" alt="meh" />');
-					$swift.html('<img width=300 src="'+swift+'" alt="meh" />');
-					alert('images loaded.');
+					var fLen = files.length,
+						liBuffer = [],
+						$target;
+						
+					if($left.find('li').length === 0){
+						$target = $left;
+					} else {
+						$target = $right;
+					}
+					
+					for(var i=0; i<fLen; i++){
+						liBuffer.push('<li style="height: 500px"><img width=300 src="'+files[i]+'" alt="holiday rad-ness" /></li>');
+					}
+					
+					$target.append(liBuffer.join(''));
+					
 				})
-				.pil([ bieber, kesha, swift ]);
+				.pil({
+					collections: [
+						[accordion, cycle, gothing, smoking1],
+						[smoking2, stalking, treehats]
+					]
+				});
 						
 		});
 		
@@ -47,19 +68,16 @@
 
 <body>
 	<div id="wrapper">
-		<h1>Basic mult array</h1>
+		<h1>Basic single array w/ custom Event</h1>
 		
-		<p>Music</p>
-		<ul>
-			<li id="crouching-tiger-hidden-kesha"></li>
-			<li id="bieberriffic"></li>
-			<li id="she-tailors-swiftly"></li>
+		<ul class="left">
+			
 		</ul>
 		
-		<p>Movies</p>
-		<ul>
-			<li id=""></li>
+		<ul class="right">
+		
 		</ul>
+
 		
 	</div>
 	
