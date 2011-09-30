@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+<head>
+	<title>P.rogressive I.mage L.oad Examples</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="P.rogressive I.mage L.oad Examples" />
+	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
+	<meta name="robots" content="index, follow" />
+
+	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
+
+	<!-- Whatever you do, do it with style -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	<link rel="stylesheet" href="css/main.css" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.pil.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var $body = $('body'),
+				$ul = $('ul');
+			
+			$body
+				.bind('pil::imagesLoadComplete', function(e){
+					$ul.fadeIn().removeClass('hidden');
+				})
+				.pil($ul);
+		});
+		
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>Basic jQuery parent</h1>
+		
+		<ul class="hidden">
+			<li><img src="imgs/ponies/alien.jpg" alt="pony" /></li>
+			<li><img src="imgs/ponies/Chewbacca.jpg" alt="pony" /></li>
+			<li><img src="imgs/ponies/Cthulhu.jpg" alt="pony" /></li>
+			<li><img src="imgs/ponies/Edward-Scissorhands.jpg" alt="pony" /></li>
+		</ul>
+
+		
+	</div>
+	
+</body>
+</html>

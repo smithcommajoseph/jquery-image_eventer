@@ -47,3 +47,6 @@ p.note{ margin-bottom:20px;}
 .right{ 
 	float: right;
 	}
+.hidden {
+	display: none !important;
+}
