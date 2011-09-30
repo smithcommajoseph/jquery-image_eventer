@@ -1,6 +1,8 @@
 /*!
 	* jQuery Progressive Image Load: ...
 	*
+	* https://github.com/technicolorenvy/jquery-progressive_image_load
+	*
 	* Dependencies:
 	* jQuery 1.4+ (jquery.com)
 	*
