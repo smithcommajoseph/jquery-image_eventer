@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+<head>
+	<title>P.rogressive I.mage L.oad Examples</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="P.rogressive I.mage L.oad Examples" />
+	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
+	<meta name="robots" content="index, follow" />
+
+	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
+
+	<!-- Whatever you do, do it with style -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	<link rel="stylesheet" href="css/main.css" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.pil.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var $body = $('body'),
+				f1 = 'imgs/waters/faces1.jpg',
+				f2 = 'imgs/waters/faces2.jpg',
+				fly = 'imgs/waters/flying.jpg',
+				f3 = 'imgs/waters/faces3.jpg',
+				$f1 = $('#f1'),
+				$f2 = $('#f2'),
+				$fly = $('#fly'),
+				$f3 = $('#f3');
+			
+			$body
+				.bind('pil::imagesLoadComplete', function(e, files){
+					$f1.html('<img src="'+f1+'" alt="watersports" />');
+					$f2.html('<img src="'+f2+'" alt="watersports" />');
+					$fly.html('<img src="'+fly+'" alt="watersports" />');
+					$f3.html('<img src="'+f3+'" alt="watersports" />');
+					
+					alert('images loaded.');
+				})
+				.pil([ f1, f2, fly, f3 ]);
+						
+		});
+		
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>Basic single array</h1>
+		
+		<ul>
+			<li id="f1"></li>
+			<li id="f2"></li>
+			<li id="fly"></li>
+			<li id="f3"></li>
+			
+		</ul>
+
+		
+	</div>
+	
+</body>
+</html>
