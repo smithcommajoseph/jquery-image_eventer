@@ -8,7 +8,7 @@
 
 (function($){
 	
-	var ver = '0.1',
+	var ver = '0.2',
 		$elem,
 		$body = $('body'),
 		$tmpCont = $('<div id="pil-tmp-container" style="display: none !important"/>'),
