@@ -9,7 +9,7 @@
 (function($){
 	
 	var ver = '0.1',
-		$this,
+		$elem,
 		$body = $('body'),
 		$tmpCont = $('<div id="pil-tmp-container" style="display: none !important"/>'),
 		queue,
@@ -43,14 +43,13 @@
 			qL = queue.length,
 			fL;
 			
-		$this.bind('pil::tmpLoadComplete', _tmpLoadComplete);
 		$body.append($tmpCont);
 			
 		fL = queue[i].files.length-1;
 		for(j=fL; j>=0; j--){
 			$tmpCont.append('<img src="'+queue[i].files[j]+'" alt="stubbed" />');
 		}
-		// console.log(queue[i].completedEvent);
+		
 		_checkImageLoad($tmpCont.find('img'));
 
 	}
@@ -73,10 +72,8 @@
 	
 	}
 	
-	function _tmpLoadComplete(e){
-		//trigger EXTERNAL event here
-		$this.trigger(queue[i].completedEvent);
-		$this.unbind('pil::tmpLoadComplete', _tmpLoadComplete);
+	function _tmpLoadComplete(){
+		$elem.trigger(queue[i].completedEvent, [queue[i].files]);
 		$tmpCont.remove();
 		if(typeof queue[i+1] !== 'undefined'){
 			i++;
@@ -96,8 +93,8 @@
 				isLoaded[$(this).attr('src')] = true;
 				
 				if(_allTrues(isLoaded)){
+					_tmpLoadComplete();
 					$collection.unbind('load');
-					$this.trigger('pil::tmpLoadComplete');
 				}
 			 })
 			.each(function(index) { // check complete in case background images load from cache
@@ -108,7 +105,7 @@
 	}
 	
 	$.fn.pil = function(a, b){
-		$this = $(this);
+		$elem = $(this);
 		queue = _setQueue(a, b);
 			
 		return this.each(function(){

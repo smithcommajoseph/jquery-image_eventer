@@ -32,13 +32,13 @@
 				$swift = $('#she-tailors-swiftly');
 			
 			$body
-				.pil([ bieber, kesha, swift ])
-				.bind('pil::imagesLoadComplete', function(e){
+				.bind('pil::imagesLoadComplete', function(e, files){
 					$kesha.html('<img width=300 src="'+kesha+'" alt="Go Nashville, but meh" />');
 					$bieber.html('<img width=300 src="'+bieber+'" alt="meh" />');
 					$swift.html('<img width=300 src="'+swift+'" alt="meh" />');
 					alert('images loaded.');
-				});
+				})
+				.pil([ bieber, kesha, swift ]);
 						
 		});
 		

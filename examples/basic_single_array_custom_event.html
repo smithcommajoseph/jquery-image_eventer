@@ -33,13 +33,13 @@
 				cEvent = 'shama_lama_ding_dong';
 			
 			$body
-				.pil([ bieber, kesha, swift ], cEvent)
 				.bind(cEvent, function(e){
 					$kesha.html('<img width=300 src="'+kesha+'" alt="Go Nashville! but, alas, meh" />');
 					$bieber.html('<img width=300 src="'+bieber+'" alt="meh" />');
 					$swift.html('<img width=300 src="'+swift+'" alt="meh" />');
 					alert('custom event named "'+cEvent+'" did all this heavy lifting.');
-				});
+				})
+				.pil([ bieber, kesha, swift ], cEvent);
 						
 		});
 		
@@ -48,7 +48,7 @@
 
 <body>
 	<div id="wrapper">
-		<h1>Basic single array</h1>
+		<h1>Basic single array w/ custom Event</h1>
 		
 		<ul>
 			<li id="crouching-tiger-hidden-kesha"></li>
