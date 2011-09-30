@@ -17,21 +17,35 @@
 	
 	function _setQueue(a, b){
 		var queue = [],
-			e;
+			e, i,
+			colLen;
 		
 		switch(typeof a){ 
 			case 'object':
 				if(_isArray(a)){
 					e = (b !== undefined && typeof b == 'string') ? b : 'pil::imagesLoadComplete';
 					queue.push({files: a, completedEvent: e});
-				}else{
+				} else {
 					//we have a map, do map stuff...
+					if(typeof a.collections !== 'undefined' && _isArray(a.collections)){
+						colLen = a.collections.length;
+						
+						for(i=0; i<colLen; i++){
+							if(_isArray(a.collections[i])){
+								e = 'pil::imagesLoadComplete';
+								queue.push({files: a.collections[i], completedEvent: e});
+							} else {
+								queue.push({files: a.collection[i].files, completedEvent: a.collection[i].completedEvent});
+							}
+						}
+						
+					} else {
+						_errors();
+					}
 				}
 				break;
 			default:
-				//if your using a modern browser, you'll get a decent error.
-				console.error('You have provided the wrong kind of argument.');
-				console.warn('Please pass an Array or Object as your first arg to $.pil');
+				_errors();
 				break;
 		}
 		
@@ -102,6 +116,12 @@
 					if(_allTrues(isLoaded) === false ){ $(this).trigger('load'); }
 				}
             });
+	}
+	
+	function _errors(){
+		//if your using a modern browser, you'll get a decent error.
+		console.error('You have provided the wrong kind of argument.');
+		console.warn('Please pass an Array or Object as your first arg to $.pil');
 	}
 	
 	$.fn.pil = function(a, b){
