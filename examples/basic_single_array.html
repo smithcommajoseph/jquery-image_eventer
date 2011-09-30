@@ -22,23 +22,24 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var $wn = $('window'),
-				bieber = '/imgs/dean_boyers_favorites/justin-bieber.jpg',
-				kesha = '/imgs/dean_boyers_favorites/kesha.jpg',
-				swift = '/imgs/dean_boyers_favorites/taylor-swift.jpg',
-				$bieber = $('#bieberriffic'),
+
+			var $body = $('body'),
+				kesha = 'imgs/dean_boyers_favorites/kesha.jpg',
+				bieber = 'imgs/dean_boyers_favorites/justin-bieber.jpg',
+				swift = 'imgs/dean_boyers_favorites/taylor-swift.jpg',
 				$kesha = $('#crouching-tiger-hidden-kesha'),
+				$bieber = $('#bieberriffic'),
 				$swift = $('#she-tailors-swiftly');
 			
-			$.pil([	bieber, kesha, swift ]);
-			
-			$wn.bind('pil::imagesLoadComplete', function(e){
-				$bieber.html(bieber);
-				$kesha.html(kesha);
-				$swift.html(swift);
-				alert('images loaded.');
-			});
-			
+			$body
+				.pil([ bieber, kesha, swift ])
+				.bind('pil::imagesLoadComplete', function(e){
+					$kesha.html('<img width=300 src="'+kesha+'" alt="Go Nashville, but meh" />');
+					$bieber.html('<img width=300 src="'+bieber+'" alt="meh" />');
+					$swift.html('<img width=300 src="'+swift+'" alt="meh" />');
+					alert('images loaded.');
+				});
+						
 		});
 		
 	</script>
@@ -49,8 +50,8 @@
 		<h1>Basic single array</h1>
 		
 		<ul>
-			<li id="bieberriffic"></li>
 			<li id="crouching-tiger-hidden-kesha"></li>
+			<li id="bieberriffic"></li>
 			<li id="she-tailors-swiftly"></li>
 		</ul>
 
