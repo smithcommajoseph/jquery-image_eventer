@@ -24,24 +24,13 @@
 		$(document).ready(function(){
 
 			var $body = $('body'),
-				f1 = 'imgs/waters/faces1.jpg',
-				f2 = 'imgs/waters/faces2.jpg',
-				fly = 'imgs/waters/flying.jpg',
-				f3 = 'imgs/waters/faces3.jpg',
-				$f1 = $('#f1'),
-				$f2 = $('#f2'),
-				$fly = $('#fly'),
-				$f3 = $('#f3');
+				$ul = $('ul');
 			
 			$body
-				.bind('pil::imagesLoadComplete', function(e, files){
-					$f1.html('<img src="'+f1+'" alt="watersports" />');
-					$f2.html('<img src="'+f2+'" alt="watersports" />');
-					$fly.html('<img src="'+fly+'" alt="watersports" />');
-					$f3.html('<img src="'+f3+'" alt="watersports" />');
+				.bind('pil::imagesLoadComplete', function(e){
+					$ul.fadeIn().removeClass('hidden');
 				})
-				.pil([ f1, f2, fly, f3 ]);
-						
+				.pil($ul);
 		});
 		
 	</script>
@@ -49,14 +38,13 @@
 
 <body>
 	<div id="wrapper">
-		<h1>Basic single array</h1>
+		<h1>Basic jQuery parent</h1>
 		
-		<ul>
-			<li id="f1"></li>
-			<li id="f2"></li>
-			<li id="fly"></li>
-			<li id="f3"></li>
-			
+		<ul class="hidden">
+			<li><img src="imgs/ponies/alien.jpg" alt="pony" /></li>
+			<li><img src="imgs/ponies/Chewbacca.jpg" alt="pony" /></li>
+			<li><img src="imgs/ponies/Cthulhu.jpg" alt="pony" /></li>
+			<li><img src="imgs/ponies/Edward-Scissorhands.jpg" alt="pony" /></li>
 		</ul>
 
 		

@@ -19,7 +19,6 @@
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../jquery.pil.js"></script>
-	<script type="text/javascript" src="js/examples.js"></script>
 	
 </head>
 
@@ -55,8 +54,12 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;{files: ['img4.jpg', 'img5.jpg', 'img6.jpg'], completedEvent: 'name_of_event2'}<br/>
 			&nbsp;&nbsp;]<br/>
 		});</code>
-		<p><a href="basic_mult_array_custome_event.html">Basic mult array w/ custom events</a></p>
+		<p><a href="basic_mult_array_custom_event.html">Basic mult array w/ custom events</a></p>
 		
+		<h2>5. Passing a jQuery object</h2>
+		<p class="note">With images passed by thier parent.</p>
+		<code>$.pil($('#Some_Id_that_exists_in_the_DOM'));</code>
+		<p><a href="basic_jq_parent.html">Basic jQuery parent</a></p>
 	</div>
 </body>
 </html>
