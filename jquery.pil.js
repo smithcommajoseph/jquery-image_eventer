@@ -77,8 +77,9 @@
 			fL;
 			
 		$body.append($tmpCont);
-			
+		
 		fL = queue[i].files.length-1;
+		
 		for(j=fL; j>=0; j--){
 			$tmpCont.append('<img src="'+queue[i].files[j]+'" alt="stubbed" />');
 		}
@@ -119,7 +120,8 @@
 	
 	function _tmpLoadComplete(){
 		$elem.trigger(queue[i].completedEvent, [queue[i].files]);
-		$tmpCont.remove();
+		$tmpCont.empty().remove();
+		
 		if(typeof queue[i+1] !== 'undefined'){
 			i++;
 			_eventController(queue);
