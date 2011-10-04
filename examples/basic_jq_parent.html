@@ -40,13 +40,29 @@
 	<div id="wrapper">
 		<h1>Basic jQuery parent</h1>
 		
+		<p>You can also target images you want to load by passing a jQuery object that contains img tags.</p>
+		
 		<ul class="hidden">
-			<li><img src="imgs/ponies/alien.jpg" alt="pony" /></li>
-			<li><img src="imgs/ponies/Chewbacca.jpg" alt="pony" /></li>
-			<li><img src="imgs/ponies/Cthulhu.jpg" alt="pony" /></li>
-			<li><img src="imgs/ponies/Edward-Scissorhands.jpg" alt="pony" /></li>
+			<li><img width=800 src="imgs/ponies/alien.jpg" alt="pony" /></li>
+			<li><img width=800 src="imgs/ponies/Chewbacca.jpg" alt="pony" /></li>
+			<li><img width=800 src="imgs/ponies/Cthulhu.jpg" alt="pony" /></li>
+			<li><img width=800 src="imgs/ponies/Edward-Scissorhands.jpg" alt="pony" /></li>
 		</ul>
-
+		
+		<br/><br/>
+		
+		<p>When using this method <em>All</em> node items that are imgs will be selected for 'preloading'. As you'll notice, this method allows the same amount of control as passing an array of urls to your images, but allows you to write much less code.</p>
+		
+		<code>
+		var $body = $('body'),<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$ul = $('ul');<br/><br/>
+		
+		$body<br/>
+		&nbsp;&nbsp;.bind('pil::imagesLoadComplete', function(e){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$ul.fadeIn().removeClass('hidden');<br/>
+		&nbsp;&nbsp;})<br/>
+		&nbsp;&nbsp;.pil($ul);
+		</code>
 		
 	</div>
 	
