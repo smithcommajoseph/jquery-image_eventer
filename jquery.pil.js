@@ -150,7 +150,7 @@
 	}
 	
 	function _errors(){
-		//if your using a modern browser, you'll get a decent error.
+		//if your using a modern browser, you'll get a decent error/warning.
 		console.error('You have provided the wrong kind of argument.');
 		console.warn('Please pass an Array or Object as your first arg to $.pil');
 	}
