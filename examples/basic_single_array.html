@@ -35,13 +35,12 @@
 			
 			$body
 				.bind('pil::imagesLoadComplete', function(e, files){
-					$f1.html('<img src="'+f1+'" alt="watersports" />');
-					$f2.html('<img src="'+f2+'" alt="watersports" />');
-					$fly.html('<img src="'+fly+'" alt="watersports" />');
-					$f3.html('<img src="'+f3+'" alt="watersports" />');
+					$f1.html('<img width=300 src="'+f1+'" alt="watersports" />');
+					$f2.html('<img width=300 src="'+f2+'" alt="watersports" />');
+					$fly.html('<img width=300 src="'+fly+'" alt="watersports" />');
+					$f3.html('<img width=300 src="'+f3+'" alt="watersports" />');
 				})
 				.pil([ f1, f2, fly, f3 ]);
-						
 		});
 		
 	</script>
@@ -51,14 +50,39 @@
 	<div id="wrapper">
 		<h1>Basic single array</h1>
 		
+		<p>Supposing we have an unordered list with 4 li elements. If each of those elements have an unique ID, we can 'preload' our images then append them into their corresponding li like so.</p>
+		
 		<ul>
 			<li id="f1"></li>
 			<li id="f2"></li>
 			<li id="fly"></li>
 			<li id="f3"></li>
-			
 		</ul>
-
+		
+		<br/><br/>
+		
+		<p>If you are seeing images above, our 'pil::imagesLoadComplete' successfully fired. Since we were listening to that event, we were able to append our images into their proper place.</p>
+				
+		<code>
+		var $body = $('body'),<br/>
+		&nbsp;&nbsp;f1 = 'imgs/waters/faces1.jpg',<br/>
+		&nbsp;&nbsp;f2 = 'imgs/waters/faces2.jpg',<br/>
+		&nbsp;&nbsp;fly = 'imgs/waters/flying.jpg',<br/>
+		&nbsp;&nbsp;f3 = 'imgs/waters/faces3.jpg',<br/>
+		&nbsp;&nbsp;$f1 = $('#f1'),<br/>
+		&nbsp;&nbsp;$f2 = $('#f2'),<br/>
+		&nbsp;&nbsp;$fly = $('#fly'),<br/>
+		&nbsp;&nbsp;$f3 = $('#f3');<br/><br/>
+			
+		$body<br/>
+		&nbsp;&nbsp;.bind('pil::imagesLoadComplete', function(e, files){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$f1.html('&#60;img width=300 src="'+f1+'" alt="watersports" /&#62;');<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$f2.html('&#60;img width=300 src="'+f2+'" alt="watersports" /&#62;');<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$fly.html('&#60;img width=300 src="'+fly+'" alt="watersports" /&#62;');<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$f3.html('&#60;img width=300 src="'+f3+'" alt="watersports" /&#62;');<br/>
+		&nbsp;&nbsp;})<br/>
+		&nbsp;&nbsp;.pil([ f1, f2, fly, f3 ]);<br/>
+		</code>
 		
 	</div>
 	

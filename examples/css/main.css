@@ -31,9 +31,9 @@ border: 1px solid #ccc;
 }
 
 p {
-font: normal 12px/16px Helvetica, Arial, sans-serif;
+font: normal 13px/16px Helvetica, Arial, sans-serif;
 margin-bottom: 40px;
-color: #999;
+color: #666;
 }
 
 em {
@@ -47,6 +47,11 @@ p.note{ margin-bottom:20px;}
 .right{ 
 	float: right;
 	}
+.breaker{
+  display: block;
+  width: 100%;
+  float:left;
+}
 .hidden {
 	display: none !important;
 }
