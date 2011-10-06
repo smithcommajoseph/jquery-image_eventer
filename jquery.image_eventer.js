@@ -1,7 +1,7 @@
 /*!
-	* jQuery Progressive Image Load: ...
+	* jQuery Image Eventer: ...
 	*
-	* https://github.com/technicolorenvy/jquery-progressive_image_load
+	* https://github.com/technicolorenvy/jquery-image_eventer
 	*
 	* Dependencies:
 	* jQuery 1.4+ (jquery.com)
@@ -10,14 +10,14 @@
 
 (function($){
 	
-	var ver = '0.2',
+	var ver = '0.3',
 		$elem,
 		$body = $('body'),
-		$tmpCont = $('<div id="pil-tmp-container" style="display: none !important"/>'),
+		$tmpCont = $('<div id="image_eventer-tmp-container" style="display: none !important"/>'),
 		queue = [],
 		i = 0,
 		
-		DEFAULT_EVENT = 'pil::imagesLoadComplete';
+		DEFAULT_EVENT = 'image_eventer::imagesLoadComplete';
 	
 	function _setQueue(a, b){
 		var i, iArr,
@@ -154,10 +154,10 @@
 	function _errors(){
 		//if your using a modern browser, you'll get a decent error/warning.
 		console.error('You have provided the wrong kind of argument.');
-		console.warn('Please pass an Array or Object as your first arg to $.pil');
+		console.warn('Please pass an Array or Object as your first arg to $.image_eventer');
 	}
 	
-	$.fn.pil = function(a, b){
+	$.fn.image_eventer = function(a, b){
 		$elem = $(this);
 		queue = _setQueue(a, b);
 			
@@ -166,6 +166,6 @@
 		});
 	};
 	
-	$.fn.pil.ver = function() { return ver; };
+	$.fn.image_eventer.ver = function() { return ver; };
 	
 })(jQuery);
