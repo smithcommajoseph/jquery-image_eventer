@@ -2,11 +2,11 @@
 
 <html lang="en" class="no-js">
 <head>
-	<title>P.rogressive I.mage L.oad Examples</title>
+	<title>Image Eventer Examples</title>
 
 	<!-- Meta -->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="title" content="P.rogressive I.mage L.oad Examples" />
+	<meta name="title" content="Image Eventer Examples" />
 	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
 	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
 	<meta name="robots" content="index, follow" />
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="css/main.css" />
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://raw.github.com/technicolorenvy/jquery-progressive_image_load/master/jquery.pil.js"></script>
+	<script type="text/javascript" src="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.js"></script>
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -34,13 +34,13 @@
 				$f3 = $('#f3');
 			
 			$body
-				.bind('pil::imagesLoadComplete', function(e, files){
+				.bind('image_eventer::imagesLoadComplete', function(e, files){
 					$f1.html('<img width=300 src="'+f1+'" alt="watersports" />');
 					$f2.html('<img width=300 src="'+f2+'" alt="watersports" />');
 					$fly.html('<img width=300 src="'+fly+'" alt="watersports" />');
 					$f3.html('<img width=300 src="'+f3+'" alt="watersports" />');
 				})
-				.pil([ f1, f2, fly, f3 ]);
+				.image_eventer([ f1, f2, fly, f3 ]);
 		});
 		
 	</script>
@@ -61,7 +61,7 @@
 		
 		<br/><br/>
 		
-		<p>If you are seeing images above, our 'pil::imagesLoadComplete' successfully fired. Since we were listening to that event, we were able to append our images into their proper place.</p>
+		<p>If you are seeing images above, our 'image_eventer::imagesLoadComplete' successfully fired. Since we were listening to that event, we were able to append our images into their proper place.</p>
 				
 		<code>
 		var $body = $('body'),<br/>
@@ -75,13 +75,13 @@
 		&nbsp;&nbsp;$f3 = $('#f3');<br/><br/>
 			
 		$body<br/>
-		&nbsp;&nbsp;.bind('pil::imagesLoadComplete', function(e, files){<br/>
+		&nbsp;&nbsp;.bind('image_eventer::imagesLoadComplete', function(e, files){<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;$f1.html('&#60;img width=300 src="'+f1+'" alt="watersports" /&#62;');<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;$f2.html('&#60;img width=300 src="'+f2+'" alt="watersports" /&#62;');<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;$fly.html('&#60;img width=300 src="'+fly+'" alt="watersports" /&#62;');<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;$f3.html('&#60;img width=300 src="'+f3+'" alt="watersports" /&#62;');<br/>
 		&nbsp;&nbsp;})<br/>
-		&nbsp;&nbsp;.pil([ f1, f2, fly, f3 ]);<br/>
+		&nbsp;&nbsp;.image_eventer([ f1, f2, fly, f3 ]);<br/>
 		</code>
 		
 	</div>
