@@ -2,11 +2,11 @@
 
 <html lang="en" class="no-js">
 <head>
-	<title>P.rogressive I.mage L.oad Examples</title>
+	<title>Image Eventer Examples</title>
 
 	<!-- Meta -->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="title" content="P.rogressive I.mage L.oad Examples" />
+	<meta name="title" content="Image Eventer Examples" />
 	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
 	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
 	<meta name="robots" content="index, follow" />
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="css/main.css" />
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="../jquery.pil.js"></script>
+	<script type="text/javascript" src="../jquery.image_eventer.js"></script>
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -38,7 +38,7 @@
 					$bieber.html('<img width=300 src="'+bieber+'" alt="Go American Idol!" />');
 					$swift.html('<img width=300 src="'+swift+'" alt="Go, um, Taylor!" />');
 				})
-				.pil([ bieber, kesha, swift ], cEvent);
+				.image_eventer([ bieber, kesha, swift ], cEvent);
 						
 		});
 		
@@ -49,7 +49,7 @@
 	<div id="wrapper">
 		<h1>Basic single array w/ custom Event</h1>
 		
-		<p>This example is functionally the same as the <a href="basic_single_array.html">last example</a>, however, as you can see below you can pass your own event name as the second argument to $.pil. In this example we're using 'shama_lama_ding_dong' (passed as the var cEvent).</p>
+		<p>This example is functionally the same as the <a href="basic_single_array.html">last example</a>, however, as you can see below you can pass your own event name as the second argument to $.image_eventer. In this example we're using 'shama_lama_ding_dong' (passed as the var cEvent).</p>
 		
 		<ul>
 			<li id="crouching-tiger-hidden-kesha"></li>
@@ -59,7 +59,7 @@
 		
 		<br/><br/>
 
-		<p>This allows you to _potentially_ bind to something prettier than 'pil::imagesLoadComplete'.</p>
+		<p>This allows you to _potentially_ bind to something prettier than 'image_eventer::imagesLoadComplete'.</p>
 		<p>If you see K$sha, Justin Bieber, and Taylor Swift, then all went as planned.</p>
 		<code>
 		var $body = $('body'),<br/>
@@ -77,7 +77,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;$bieber.html('&#60;img width=300 src="'+bieber+'" alt="Go American Idol!" /&#62;');<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;$swift.html('&#60;img width=300 src="'+swift+'" alt="Go, um, Taylor!" /&#62;');<br/>
 		&nbsp;&nbsp;})<br/>
-		&nbsp;&nbsp;.pil([ bieber, kesha, swift ], cEvent);
+		&nbsp;&nbsp;.image_eventer([ bieber, kesha, swift ], cEvent);
 		</code>
 		
 	</div>
