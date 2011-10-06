@@ -2,11 +2,11 @@
 
 <html lang="en" class="no-js">
 <head>
-	<title>P.rogressive I.mage L.oad Examples</title>
+	<title>Image Eventer Examples</title>
 
 	<!-- Meta -->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="title" content="P.rogressive I.mage L.oad Examples" />
+	<meta name="title" content="Image Eventer Examples" />
 	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
 	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
 	<meta name="robots" content="index, follow" />
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="css/main.css" />
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="../jquery.pil.js"></script>
+	<script type="text/javascript" src="../jquery.image_eventer.js"></script>
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -36,7 +36,7 @@
 
 			
 			$body
-				.bind('pil::imagesLoadComplete', function(e, files){
+				.bind('image_eventer::imagesLoadComplete', function(e, files){
 					var fLen = files.length,
 						liBuffer = [],
 						$target;
@@ -54,7 +54,7 @@
 					$target.append(liBuffer.join(''));
 					
 				})
-				.pil({
+				.image_eventer({
 					collections: [
 						[accordion, cycle, gothing, smoking1],
 						[smoking2, stalking, treehats]
@@ -99,7 +99,7 @@
 
 		
 		$body<br/>
-		&nbsp;&nbsp;.bind('pil::imagesLoadComplete', function(e, files){<br/>
+		&nbsp;&nbsp;.bind('image_eventer::imagesLoadComplete', function(e, files){<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;var fLen = files.length,<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liBuffer = [],<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$target;<br/><br/>
@@ -117,7 +117,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;$target.append(liBuffer.join(''));<br/><br/>
 				
 		&nbsp;&nbsp;})<br/>
-		&nbsp;&nbsp;.pil({<br/>
+		&nbsp;&nbsp;.image_eventer({<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;collections: [<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[accordion, cycle, gothing, smoking1],<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[smoking2, stalking, treehats]<br/>
