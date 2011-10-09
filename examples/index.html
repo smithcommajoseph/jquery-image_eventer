@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+<head>
+	<title>Image Eventer Examples</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="Image Eventer Examples" />
+	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
+	<meta name="robots" content="index, follow" />
+
+	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
+
+	<!-- Whatever you do, do it with style -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	<link rel="stylesheet" href="css/main.css" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.js"></script>
+	
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>Image Eventer Examples</h1>
+		
+		<p class="note">You can massage your load times by compressing your code and compressing your images, however, in the end, load times are a fact of life we have to face and deal with gracefully.</p>
+		<p>The goal of $.image_eventer is to simplify a common task that many of us face. By giving you the ability to bind to events as given sets of images load, $.image_eventer doesn't make assumptions. You may want to simply show images once a collection has loaded, fadeIn each image gracefully as they are ready. It's your choice. You get what you give.</p>
+		
+		<h2>1. Single array</h2>
+		<p class="note">This will walk you through a very basic p.i.l. example. With images passed as an array.</p>
+		<code>$.image_eventer(['img1.jpg', 'img2.jpg', 'img3.jpg']);</code>
+		<p><a href="basic_single_array.html">Basic single array</a></p>
+		
+		<h2>2. Passing a jQuery object</h2>
+		<p class="note">With images passed by thier parent.</p>
+		<code>$.image_eventer($('#Some_Id_that_exists_in_the_DOM'));</code>
+		<p><a href="basic_jq_parent.html">Basic jQuery parent</a></p>
+				
+		<h2>3. Single array w/ custom event</h2>
+		<p class="note">This will walk you through a very basic p.i.l. example. With images passed as an array and a custom event.</p>
+		<code>$.image_eventer(['img1.jpg', 'img2.jpg', 'img3.jpg'], 'name_of_event');</code>
+		<p><a href="basic_single_array_custom_event.html">Basic single array w/ custom event</a></p>
+
+		<h2>4. Passing a jQuery object w/ custom event</h2>
+		<p>coming soon...</p>
+		
+		<h2>5. Progressive Image Load (mutliple arrays)</h2>
+		<p class="note">Here we demonstrate how to load 'sets' of images. Each set will load and fire the default $.image_eventer() loaded event.</p>
+		<code>$.image_eventer({<br/>
+			&nbsp;&nbsp;collections: [<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;['img1.jpg', 'img2.jpg', 'img3.jpg'],<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;['img4.jpg', 'img5.jpg', 'img6.jpg']<br/>
+			&nbsp;&nbsp;]<br/>
+		});</code>
+		<p><a href="basic_mult_array.html">Basic mult array</a></p>
+		
+		<h2>6. Progressive Image Load (mutliple jQ parents)</h2>
+		<p>coming soon...</p>
+		
+		<h2>5. Progressive Image Load (mutliple objects w/ custom events)</h2>
+		<p>coming soon...</p>
+		
+		<!-- <p class="note">Here we demonstrate how to load 'sets' of images. Each set will load and fire it's own event custom event.</p>
+		<code>$.image_eventer({<br/>
+			&nbsp;&nbsp;collections: [<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;{files: ['img1.jpg', 'img2.jpg', 'img3.jpg'], completedEvent: 'name_of_event1'},<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;{files: ['img4.jpg', 'img5.jpg', 'img6.jpg'], completedEvent: 'name_of_event2'}<br/>
+			&nbsp;&nbsp;]<br/>
+		});</code>
+		<p><a href="basic_mult_array_custom_event.html">Basic mult array w/ custom events</a></p> -->
+		
+		<h2>7. Progressive Image Load (mutliple jQ parents w/ custom events)</h2>
+		<p>coming soon...</p>
+		
+
+	</div>
+</body>
+</html>

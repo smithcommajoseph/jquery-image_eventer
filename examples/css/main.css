@@ -1,0 +1,57 @@
+html, body {
+width: 100%;
+height: 100%;
+}
+
+#wrapper {
+width:800px;
+padding: 20px 0;
+margin: 0 auto;
+}
+
+h1 {
+font: bold 24px/24px Helvetica, Arial, sans-serif;
+color: #333;
+margin: 0 0 40px;
+}
+
+h2 {
+font: bold 16px/16px Helvetica, Arial, sans-serif;
+color: #666;
+margin: 0 0 16px;
+}
+
+code {
+display: block;
+width: 800px;
+padding: 20px;
+margin-bottom: 20px;
+background-color: #eee;
+border: 1px solid #ccc;
+}
+
+p {
+font: normal 13px/16px Helvetica, Arial, sans-serif;
+margin-bottom: 40px;
+color: #666;
+}
+
+em {
+	font-weight: bold;
+}
+p.note{ margin-bottom:20px;}
+
+.left{ 
+	float: left;
+	}
+.right{ 
+	float: right;
+	}
+.breaker{
+  display: block;
+  width: 100%;
+  float:left;
+}
+.hidden {
+	display: none !important;
+}
