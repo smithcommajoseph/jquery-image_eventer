@@ -30,35 +30,50 @@
 		
 		<div id="jie-main">
 			<h2 id="mission">What is jQ Image Eventer?</h2>
-			<p>Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here</p>
+			<p>The JQuery Image Eventer plugin is an event driven image load detector.</p>
+			
+			<p>When groups of images are loaded, <code>$.image_eventer</code> will trigger an event.</p>
+			
+			<p>You may then, in your own client-side code, bind to that event.</p>
 
 			<h2 id="overview">Overview</h2>
-			<p>Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here</p>
-
-			<h2 id="usage">Basic Usage</h2>
-			<p>Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here</p>
-
-			<p>Some Text here</p>
-						<pre class="codeblock">#skootch-trigger{ 
-  <span class="cS">height</span><span class="nF">:</span> <span class="cSR">31px</span><span class="nF">;</span>
-  <span class="cS">left</span><span class="nF">:</span> <span class="cSR">0px</span><span class="nF">;</span>
-  <span class="cS">position</span><span class="nF">:</span> <span class="cSR">absolute</span><span class="nF">;</span>
-  <span class="cS">width</span><span class="nF">:</span> <span class="cSR">48px</span><span class="nF">;</span>
-}
-#skootch-invader {
-  <span class="cS">display</span><span class="nF">:</span> <span class="cSR">block</span><span class="nF">;</span>
-  <span class="cS">float</span><span class="nF">:</span> <span class="cSR">left</span><span class="nF">;</span>
-  <span class="cS">left</span><span class="nF">:</span> <span class="cSR">-320px</span><span class="nF">;</span>
-  <span class="cS">position</span><span class="nF">:</span> <span class="cSR">relative</span><span class="nF">;</span>
-  <span class="cS">width</span><span class="nF">:</span> <span class="cSR">320px</span><span class="nF">;</span>
-}
-#skootch-indigen {	
-  <span class="cS">padding</span><span class="nF">:</span> <span class="cSR">20px</span><span class="nF">;</span>
-  <span class="cS">width</span><span class="nF">:</span> <span class="cSR">800px</span><span class="nF">;</span>
-  <span class="cS">margin</span><span class="nF">:</span> <span class="cSR">0 auto</span><span class="nF">;</span>
-}</pre>
+			<p>You can massage your load times by compressing your assets and utilizing lazy loading. However, load times <b>are</b> a fact of life that developers have to face and deal with gracefully.</p>
 			
-			<h2 id="mission">What is jQ Image Eventer?</h2>
+			<p><code>$.image_eventer</code> simplifies one component of common task. It gives you the ability to bind to events as images load and doesn't make assumptions.</p>
+			
+			<p>You may simply want to show images once a collection has loaded, or fade in each image gracefully as they are ready. Other use-cases may include using <code>$.image_eventer</code> to fire events as images load and update a progressbar.</p>
+			
+			<p>It's your choice. You get what you give.</p>
+
+			<h2 id="usage">Basic Usage <span>|</span> Collections</h2>
+			<p><code>$.image_eventer</code> acts upon collections of images.</p>
+			
+			<p>A collection may be either an array of urls...</p>
+			<pre class="codeblock">.image_eventer(<span>[<span class="sTr">'lib/imgs/img1.jpg'</span>, <span class="sTr">'lib/imgs/img2.jpg'</span>, ...]</span>);</pre>
+			
+			<p>or a jQuery wrapper set that contains img nodes.</p>
+			<pre class="codeblock">.image_eventer(<span class="jQ">$</span>(<span class="sTr">"#images_container"</span>));</pre>
+			
+			<p>If you need to ensure that images load in a specific order, you may pass multiple collections to <code>$.image_eventer</code> in the following fashion.</p>
+			<pre class="codeblock">.image_eventer(<span>{
+	collections: [
+		[<span class="sTr">'lib/imgs/img1.jpg'</span>, <span class="sTr">'lib/imgs/img2.jpg'</span>, ...],
+		[<span class="sTr">'lib/imgs/img1.jpg'</span>, <span class="sTr">'lib/imgs/img2.jpg'</span>, ...],
+	]
+}</span>);</pre>
+			
+			<p>Each collection will load, fire it's complete event, then move on to the next collection.</p>
+			
+			<h2 id="overview">Basic Usage <span>|</span> Being a good Listener</h2>
+			<p>When using <code>$.image_eventer</code>, it's advised that you chain invoke <code>.bind</code> and <code>.image_eventer</code> in the following order.</p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'image_eventer::imagesLoadComplete'</span>, <span class="nUm">_handlerFn</span>)
+	.image_eventer(<span>A collection of imgs</span>);</pre>
+	
+			<p>If your images are served from your browsers cache the <code>'image_eventer::imagesLoadComplete'</code> will fire almost immediately. You want to ensure you are listening for that event <b>before</b> it has a chance to fire.</p>
+			
+			<!-- <h2 id="mission">Seeing Image Eventer in action</h2>
 			<p>Some Text here</p>
 
 			<div id="orange-collection">
@@ -72,7 +87,6 @@
 				<img src="imgs/orange8.jpg" alt="orange collection image" />
 			</div>
 			
-			<h2 id="mission">What is jQ Image Eventer?</h2>
 			<p>Some Text here</p>
 			
 			<div id="green-collection">
@@ -86,7 +100,6 @@
 				<img src="imgs/green8.jpg" alt="green collection image" />
 			</div>
 		
-			<h2 id="mission">What is jQ Image Eventer?</h2>
 			<p>Some Text here</p>
 			
 			<div id="grey-collection">
@@ -104,7 +117,6 @@
 				<img src="imgs/grey12.jpg" alt="grey collection image" />
 			</div>
 			
-			<h2 id="mission">What is jQ Image Eventer?</h2>
 			<p>Some Text here</p>
 			
 			<div id="sienna-collection">
@@ -143,11 +155,12 @@
 			</div>
 		
 			<h2 id="methods">Methods</h2>
-			<p>Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here</p>
+			<p>Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here</p> -->
 			
 			<h2 id="more">Want more?</h2>
 			<p>Check out the more in&ndash;depth examples <a href="examples/index.html">here</a>.</p>
 			<p>Find a bug or have a feature request? Create an issue <a href="https://github.com/technicolorenvy/jquery-image_eventer/issues">here</a> and let me know.</p>
+			<p>This plugin is in active development and documentation will be forthcoming shortly.</p>
 			
 		</div>
 

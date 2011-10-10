@@ -127,7 +127,10 @@ html {
 	margin-top: 24px;
 	padding: 5px;
 	width: 722px;
-	} 
+	}
+#main h2 span{
+	color:#aaa;
+}
 #main p{ 
 	display:block;
 	font-size: 15px;
