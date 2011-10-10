@@ -21,14 +21,15 @@
 	
 	function _setQueue(a, b){
 		var i, iArr,
-			colLen;
+			colLen,
+			cEvent = (b !== undefined && typeof b == 'string') ? b : DEFAULT_EVENT;
 		
 		switch(typeof a){ 
 			case 'object':
 				
 				//if we're dealing w/ an array of imgs
 				if(_isArray(a)){
-					_addToQue(a, (b !== undefined && typeof b == 'string') ? b : DEFAULT_EVENT);
+					_addToQue(a, cEvent);
 				}
 				else {
 					
@@ -39,16 +40,19 @@
 						for(i=0; i<colLen; i++){
 							//array of imgs
 							if(_isArray(a.collections[i])){
-								_addToQue(a.collections[i], DEFAULT_EVENT);
+								_addToQue(a.collections[i], cEvent);
 							} 
 							//jq parent
 							else if($.contains(a.collections[i].files, document.img)){
 								iArr = _internalArr($(a.collections[i].files).find('img'));
-								_addToQue(iArr, a.collection[i].completedEvent);
+								_addToQue(iArr, cEvent);
 							}
 							//formatted 1 to 1
 							else {
-								_addToQue(a.collections[i].files, a.collection[i].completedEvent);
+								if(typeof a.collection[i].completedEvent !== 'undefined'){
+									cEvent = a.collection[i].completedEvent;
+								}
+								_addToQue(a.collections[i].files, cEvent);
 							}
 						}
 						
