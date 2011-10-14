@@ -28,12 +28,16 @@
 		
 		<div id="jie-main">
 			<div id="downloads">
+				<a href="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.min.js">
+					<span>Minified</span> <br/> (2.1K)
+				</a>
+				<span class="divider">|</span>
 				<a href="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.js">
 					<span>Development</span> <br/> (4.1K)
 				</a>
 				<span class="divider">|</span>
 				<a href="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.min.js">
-					<span>Minified</span> <br/> (2.1K)
+					<span>Full .zip</span> <br/> (7.2MB)
 				</a>
 			</div>
 			<h2 id="mission">What is jQ Image Eventer?</h2>
@@ -79,25 +83,67 @@
 			<p>If your images are served from your browsers cache the <code>'image_eventer::imagesLoadComplete'</code> will fire almost immediately. You want to ensure you are listening for that event <b>before</b> it has a chance to fire.</p>
 			
 			<h2 id="mission">Seeing Image Eventer in action</h2>
-			<p>Below are a few basic usage examples. If you're visiting this page for the first time, you should see a delay while the below images load.</p>
+			<p>Below are a few basic usage examples. If you're visiting this page for the first time, you should see a delay while the images load.</p>
+			<p>The below examples are using <a href="http://fgnass.github.com/spin.js/">spin.js</a> to provide an image-less spinner.</p>
 			
-			<a id="orange-btn" href="javascript:void(0)">Click Me</a>
+			<h3>1. Collections as Arrays</h3>
+			<p>The general pattern when passing arrays of image urls is as follows.</p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'image_eventer::imagesLoadComplete'</span>, <span class="nUm">_handlerFn</span>)
+	.image_eventer(<span>[<span class="sTr">'img1.jpg'</span>, <span class="sTr">'img2.jpg'</span>, ...]</span>);</pre>
+			
+			<p>Or, use a custom event.</p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'customEvent'</span>, <span class="nUm">_handlerFn</span>)
+	.image_eventer(<span>[<span class="sTr">'img1.jpg'</span>, <span class="sTr">'img2.jpg'</span>, ...]</span>, <span class="sTr">'customEvent'</span>);</pre>
+	
+			<p><a id="orange-btn" href="javascript:void(0)">Click me</a> to load images below.</p>
 			
 			<div id="orange-collection" class="collection-wrapper grey-back">
 				<div class="spins"></div>
 				<div class="collection hidden"></div>
 			</div>
 			
-			<p>Some Text here</p>
-			<a id="green-btn" href="javascript:void(0)">Click</a>
+			<h3>2. Collections jQ wrapper sets</h3>
+			<p>Using a jQ wrapper set is almost identical to the above example.</p>
+
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'customEvent'</span>, <span class="nUm">_handlerFn</span>)
+	.image_eventer(<span class="jQ">$</span>(<span class="sTr">"#images_container"</span>), <span class="sTr">'customEvent'</span>);</pre>
+	
+			<p><a id="green-btn" href="javascript:void(0)">Click me</a> to load images below.</p>
 			
 			<div id="green-collection" class="collection-wrapper grey-back">
 				<div class="spins"></div>
 				<div class="collection hidden"></div>
 			</div>
 		
-			<p>Some Text here</p>
-			<a id="grey-btn" href="javascript:void(0)">Click</a>
+			<h3>3. Multiple Collections - P1</h3>
+			<p>Loading multiple collections in order using multiple events.</p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span>{
+		<span class="sTr">'customEvent1'</span>: <span class="nUm">_handlerFn1</span>,
+		<span class="sTr">'customEvent2'</span>: <span class="nUm">_handlerFn2</span>
+	}</span>)
+	.image_eventer(<span>{
+		collections: [
+		  { 
+		    files: [<span class="sTr">'img1.jpg'</span>, <span class="sTr">'img2.jpg'</span>, ...],
+		    completedEvent: <span class="sTr">'customEvent1'</span>
+		  },
+		  { 
+		    files: [<span class="sTr">'img8.jpg'</span>, <span class="sTr">'img9.jpg'</span>, ...],
+		    completedEvent: <span class="sTr">'customEvent1'</span>
+		  }
+		]
+	 }</span>);</pre>
+			
+			<p>Note: You may mix and match array collections and jQ wrapper set collections.</p>
+			
+			<p><a id="grey-btn" href="javascript:void(0)">Click me</a> to load images below.</p>
 			
 			<div id="grey-collection" class="collection-wrapper grey-back">
 				<div id="s1" class="spins"></div>
@@ -105,8 +151,32 @@
 				<div class="collection"></div>
 			</div>
 			
-			<p>Some Text here</p>
-			<a id="sienna-btn" href="javascript:void(0)">Click</a>
+			<h3>4. Multiple Collections - P2</h3>
+			<p>Remembering that in jQuery, event handler functions may be passed the <code>event</code> as the first argument. When using <code>$.image_eventer</code>, you may also pass a second argument to your handler fn.</p>
+			
+			<p>The second argument will be an array of img files that have been successfully loaded in the DOM. In other words, you get back the collection that was passed in.</p>
+			
+			<p>This is particularly handy should you want to bind to a single event while acting on multiple collections. </p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'image_eventer::imagesLoadComplete'</span>, <span class="nUm">_handlerFn</span></span>)
+	.image_eventer(<span>{
+		collections: [
+		  [<span class="sTr">'img1.jpg'</span>, <span class="sTr">'img2.jpg'</span>, ...],
+		  [<span class="sTr">'img8.jpg'</span>, <span class="sTr">'img9.jpg'</span>, ...]
+		]
+	 }</span>);
+
+<span class="jQ">function</span> <span class="nUm">_handlerFn</span>(<span>event</span>, <span>files</span>){
+	<span class="jQ">var</span> i, len <span class="jQ">=</span> files.length;
+	
+	<span class="jQ">for</span>(i<span class="jQ">=</span><span class="nUm">1</span>, i<span class="jQ">&#60;=</span>len; i<span class="jQ">++</span>){
+		
+	  <span class="nF">&#47;&#47;Do stuff here...</span>
+	
+	}
+}</pre>
+			<p><a id="sienna-btn" href="javascript:void(0)">Click me</a> to load images below.</p>
 			
 			<div id="sienna-collection" class="collection-wrapper grey-back">
 				<div class="collection"></div>

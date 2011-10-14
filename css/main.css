@@ -161,6 +161,16 @@ html {
 	color:#aaa;
 	font-weight: normal;
 }
+#main h3 { 
+	border-bottom: 2px solid #cbcbcb;
+	color: #262d0b;
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 24px;
+	padding: 5px;
+	width: 726px;
+	margin-bottom: 20px;
+}
 #main p{ 
 	display:block;
 	font-size: 15px;
@@ -203,7 +213,7 @@ pre.codeblock .cS{
 	color: #ad9931;
 	}
 pre.codeblock .nF{ 
-	color: #333;
+	color: #777;
 	}
 pre.codeblock .sTr,
 pre.codeblock .cSR{ 
