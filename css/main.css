@@ -120,7 +120,14 @@ html {
 	margin: 0 auto;
 	z-index: 2;
 }
+.divider{ 
+	color:#aaa;
+	position: relative;
+	bottom: 9px; 
+	font-size: 20px;
+	}
 #downloads{
+	position:relative;
 	display:block;
 	text-align: center;
 	padding-bottom: 10px;
@@ -129,12 +136,14 @@ html {
 	color: #666;
 	display:inline-block;
 	padding: 0 5px;
-	border-bottom-style: solid;
-}
+	border-bottom: none; 
+	font-size: 12px; 
+	line-height: 15px;
+	}
 #downloads a span{
 	color: #444;
 	font: 19px 'Paytone One', arial, serif;
-}
+	}
 #downloads a:hover span{
 	color: #9c53c9;
 }
