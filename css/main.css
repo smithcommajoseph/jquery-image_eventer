@@ -116,20 +116,41 @@ html {
 	border-radius: 10px;
 
 	padding: 20px;
-	width: 732px;
+	width: 736px;
 	margin: 0 auto;
 	z-index: 2;
 }
+#downloads{
+	display:block;
+	text-align: center;
+	padding-bottom: 10px;
+}
+#downloads a{
+	color: #666;
+	display:inline-block;
+	padding: 0 5px;
+	border-bottom-style: solid;
+}
+#downloads a span{
+	color: #444;
+	font: 19px 'Paytone One', arial, serif;
+}
+#downloads a:hover span{
+	color: #9c53c9;
+}
+
 #main h2 { 
 	border-bottom: 3px solid #86D3FF;
 	color: #262d0b;
 	font-size: 20px;
+	font-weight: bold;
 	margin-top: 24px;
 	padding: 5px;
-	width: 722px;
+	width: 726px;
 	}
 #main h2 span{
 	color:#aaa;
+	font-weight: normal;
 }
 #main p{ 
 	display:block;
@@ -195,4 +216,52 @@ code{
 	background-color:gainsboro; 
 	padding-right: 5px; 
 	padding-left: 5px;
+}
+
+/*Collection shiz*/
+.grey-back{
+	background-color: #ddd;
+}
+.hidden{
+	display: none !important;
+}
+.collection-wrapper{
+	display: block;
+	width: 736px;
+	float:left;
+	margin: 20px 0 30px 0;
+	position: relative;
+}
+
+.collection-wrapper img{
+	display:block;
+	float:left;
+	margin:2px
+}
+
+#orange-collection.collection-wrapper,
+#green-collection.collection-wrapper{
+	height: 368px;
+}
+#grey-collection.collection-wrapper{
+	height: 552px;
+}
+#sienna-collection.collection-wrapper{
+	height: 1472px;
+}
+.spins{
+	position:absolute;
+}
+#orange-collection .spins,
+#green-collection .spins{
+	top: 180px;
+	left: 375px;
+}
+#grey-collection #s1{
+	top: 150px;
+	left: 200px;
+}
+#grey-collection #s2{
+	bottom: 150px;
+	right: 200px;
 }

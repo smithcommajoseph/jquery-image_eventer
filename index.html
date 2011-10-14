@@ -14,11 +14,9 @@
 	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
 
 	<!-- Whatever you do, do it with style -->
-	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" />
+	<link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="css/main.css" />
-
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.js"></script>
 	
 </head>
 
@@ -29,6 +27,15 @@
 		</div>
 		
 		<div id="jie-main">
+			<div id="downloads">
+				<a href="https://github.com/technicolorenvy/jquery-image_eventer/zipball/master">
+					<span>Download as zip</span>
+				</a>
+				<span>|</span>
+				<a href="https://github.com/technicolorenvy/jquery-image_eventer/tarball/master">
+					<span>Download as tar.gz</span>
+				</a>
+			</div>
 			<h2 id="mission">What is jQ Image Eventer?</h2>
 			<p>The JQuery Image Eventer plugin is an event driven image load detector. As collections of images are loaded into the DOM, <code>$.image_eventer</code> will trigger the appropriate, predefined events.</p>
 			
@@ -71,89 +78,42 @@
 	
 			<p>If your images are served from your browsers cache the <code>'image_eventer::imagesLoadComplete'</code> will fire almost immediately. You want to ensure you are listening for that event <b>before</b> it has a chance to fire.</p>
 			
-			<!-- <h2 id="mission">Seeing Image Eventer in action</h2>
-			<p>Some Text here</p>
-
-			<div id="orange-collection">
-				<img src="imgs/orange1.jpg" alt="orange collection image" />
-				<img src="imgs/orange2.jpg" alt="orange collection image" />
-				<img src="imgs/orange3.jpg" alt="orange collection image" />
-				<img src="imgs/orange4.jpg" alt="orange collection image" />
-				<img src="imgs/orange5.jpg" alt="orange collection image" />
-				<img src="imgs/orange6.jpg" alt="orange collection image" />
-				<img src="imgs/orange7.jpg" alt="orange collection image" />
-				<img src="imgs/orange8.jpg" alt="orange collection image" />
+			<h2 id="mission">Seeing Image Eventer in action</h2>
+			<p>Below are a few basic usage examples. If you're visiting this page for the first time, you should see a delay while the below images load.</p>
+			
+			<a id="orange-btn" href="javascript:void(0)">Click Me</a>
+			
+			<div id="orange-collection" class="collection-wrapper grey-back">
+				<div class="spins"></div>
+				<div class="collection hidden"></div>
 			</div>
 			
 			<p>Some Text here</p>
+			<a id="green-btn" href="javascript:void(0)">Click</a>
 			
-			<div id="green-collection">
-				<img src="imgs/green1.jpg" alt="green collection image" />
-				<img src="imgs/green2.jpg" alt="green collection image" />
-				<img src="imgs/green3.jpg" alt="green collection image" />
-				<img src="imgs/green4.jpg" alt="green collection image" />
-				<img src="imgs/green5.jpg" alt="green collection image" />
-				<img src="imgs/green6.jpg" alt="green collection image" />
-				<img src="imgs/green7.jpg" alt="green collection image" />
-				<img src="imgs/green8.jpg" alt="green collection image" />
+			<div id="green-collection" class="collection-wrapper grey-back">
+				<div class="spins"></div>
+				<div class="collection hidden"></div>
 			</div>
 		
 			<p>Some Text here</p>
+			<a id="grey-btn" href="javascript:void(0)">Click</a>
 			
-			<div id="grey-collection">
-				<img src="imgs/grey1.jpg" alt="grey collection image" />
-				<img src="imgs/grey2.jpg" alt="grey collection image" />
-				<img src="imgs/grey3.jpg" alt="grey collection image" />
-				<img src="imgs/grey4.jpg" alt="grey collection image" />
-				<img src="imgs/grey5.jpg" alt="grey collection image" />
-				<img src="imgs/grey6.jpg" alt="grey collection image" />
-				<img src="imgs/grey7.jpg" alt="grey collection image" />
-				<img src="imgs/grey8.jpg" alt="grey collection image" />
-				<img src="imgs/grey9.jpg" alt="grey collection image" />
-				<img src="imgs/grey10.jpg" alt="grey collection image" />
-				<img src="imgs/grey11.jpg" alt="grey collection image" />
-				<img src="imgs/grey12.jpg" alt="grey collection image" />
+			<div id="grey-collection" class="collection-wrapper grey-back">
+				<div id="s1" class="spins"></div>
+				<div id="s2" class="spins"></div>
+				<div class="collection"></div>
 			</div>
 			
 			<p>Some Text here</p>
+			<a id="sienna-btn" href="javascript:void(0)">Click</a>
 			
-			<div id="sienna-collection">
-				<img src="imgs/sienna1.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna2.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna3.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna4.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna5.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna6.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna7.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna8.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna9.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna10.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna11.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna12.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna13.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna14.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna15.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna16.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna17.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna18.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna19.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna20.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna21.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna22.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna23.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna24.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna25.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna26.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna27.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna28.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna29.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna30.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna31.jpg" alt="sienna collection image" />
-				<img src="imgs/sienna32.jpg" alt="sienna collection image" />
+			<div id="sienna-collection" class="collection-wrapper grey-back">
+				<div class="collection"></div>
 			</div>
 		
 			<h2 id="methods">Methods</h2>
-			<p>Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here</p> -->
+			<p>Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here Some Text here</p>
 			
 			<h2 id="more">Want more?</h2>
 			<p>Check out the more in&ndash;depth examples <a href="examples/index.html">here</a>.</p>
@@ -167,5 +127,11 @@
 	<a href="https://github.com/technicolorenvy/jquery-image_eventer" id="github">
 		<img src="imgs/forkme.png" alt="fork me on github" />
 	</a>
+	
+	<!-- Sauce it -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.js"></script>
+	<script type="text/javascript" src="js/spin.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
