@@ -43,7 +43,7 @@ var jQIe = jQIe || {};
 				frags = [];
 			
 			//add a spinner
-			$('#'+color+'-collection .spins').append(spinner.el);
+			// $('#'+color+'-collection .spins').append(spinner.el);
 			
 			for(i=1; i<=cnt; i++){ 
 				img = 'imgs/'+color+i+'.jpg';
@@ -55,7 +55,7 @@ var jQIe = jQIe || {};
 			$body
 				.bind(color+'CollectonLoaded', function(lE, files){
 					//kill the spinner
-					$('#'+color+'-collection .spins').empty().remove();
+					// $('#'+color+'-collection .spins').empty().remove();
 					
 					//append and show imgs
 					$('#'+color+'-collection .collection')
@@ -73,7 +73,7 @@ var jQIe = jQIe || {};
 				frags = [];
 			
 			//add a spinner
-			$('#'+color+'-collection .spins').append(spinner.el);
+			// $('#'+color+'-collection .spins').append(spinner.el);
 				
 			for(i=1; i<=cnt; i++){ 
 				frags.push('<img src="imgs/'+color+i+'.jpg" alt="'+color+' collection image" />'); 
@@ -84,7 +84,7 @@ var jQIe = jQIe || {};
 			$body
 				.bind(color+'CollectonLoaded', function(lE, files){
 					//kill the spinner
-					$('#'+color+'-collection .spins').empty().remove();
+					// $('#'+color+'-collection .spins').empty().remove();
 					
 					//fade in img wrapper
 					$('#'+color+'-collection .collection')
@@ -102,7 +102,7 @@ var jQIe = jQIe || {};
 				frags1 = [], frags2 = [];
 			
 			//add a spinners
-			$('#'+color+'-collection #s1').append(spinner.el);
+			// $('#'+color+'-collection #s1').append(spinner.el);
 			
 			for(i=1; i<=cnt; i++){
 				img = 'imgs/'+color+i+'.jpg';
@@ -114,12 +114,12 @@ var jQIe = jQIe || {};
 			$body
 				.bind({
 					'greys1Loaded': function(e){
-						$('#'+color+'-collection #s1').empty().remove();
+						// $('#'+color+'-collection #s1').empty().remove();
 						$('#'+color+'-collection .collection').append(frags1.join(''));
-						$('#'+color+'-collection #s2').append(spinner.el);
+						// $('#'+color+'-collection #s2').append(spinner.el);
 					},
 					'greys2Loaded': function(e){
-						$('#'+color+'-collection #s2').empty().remove();
+						// $('#'+color+'-collection #s2').empty().remove();
 						$('#'+color+'-collection .collection').append(frags2.join(''));
 					}
 				})
