@@ -50,7 +50,7 @@
 		<p><a href="basic_jq_parent_custom_event.html">Basic jQ parent w/ custom event</a></p>
 		
 		<h2>5. Multiple arrays</h2>
-		<p class="note">Here we demonstrate how to load 'sets' of images. Each set will load and fire the default $.image_eventer() loaded event.</p>
+		<p class="note">Multiple collections of images. Each set will load and fire the default $.image_eventer() loaded event.</p>
 		<code>$.image_eventer({<br/>
 			&nbsp;&nbsp;collections: [<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;['img1.jpg', 'img2.jpg', 'img3.jpg'],<br/>
@@ -60,7 +60,7 @@
 		<p><a href="basic_mult_array.html">Basic mult array</a></p>
 		
 		<h2>6. Mutliple jQ parents</h2>
-		<p class="note">Here we demonstrate how to load 'sets' of images. Each set will load and fire the default $.image_eventer() loaded event.</p>
+		<p class="note">Multiple collections of images. Each set will load and fire the default $.image_eventer() loaded event.</p>
 		<code>$.image_eventer({<br/>
 			&nbsp;&nbsp;collections: [<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;$('#Some_Id_that_exists_in_the_DOM'),<br/>
@@ -69,21 +69,15 @@
 		});</code>
 		<p><a href="basic_mult_jqparents.html">Muliple jQ parents</a></p>
 		
-		<!-- <h2>5. Image Eventer (mutliple objects w/ custom events)</h2>
-		<p>coming soon...</p> -->
-		
-		<!-- <p class="note">Here we demonstrate how to load 'sets' of images. Each set will load and fire it's own event custom event.</p>
+		<h2>Multiple collections w/ custom events</h2>
+		<p class="note">Multiple collections of images. Each set will load and fire it's own event custom event.</p>
 		<code>$.image_eventer({<br/>
 			&nbsp;&nbsp;collections: [<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;{files: ['img1.jpg', 'img2.jpg', 'img3.jpg'], completedEvent: 'name_of_event1'},<br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;{files: ['img4.jpg', 'img5.jpg', 'img6.jpg'], completedEvent: 'name_of_event2'}<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;{files: $('#Id_in_the_DOM'), completedEvent: 'name_of_event2'}<br/>
 			&nbsp;&nbsp;]<br/>
 		});</code>
-		<p><a href="basic_mult_array_custom_event.html">Basic mult array w/ custom events</a></p> -->
-		
-		<!-- <h2>7. Image Eventer (mutliple jQ parents w/ custom events)</h2>
-		<p>coming soon...</p> -->
-		
+		<p><a href="multiple_collections_custom_events.html">Multiple collections w/ custom events</a></p>
 
 	</div>
 </body>

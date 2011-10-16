@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Image Eventer Examples</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="Image Eventer Examples" />
+	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
+	<meta name="robots" content="index, follow" />
+
+	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
+
+	<!-- Whatever you do, do it with style -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	<link rel="stylesheet" href="css/main.css" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.image_eventer.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var $body = $('body'),
+				bighead = 'imgs/awkward_fam_photos/bighead.jpg',
+				bookends = 'imgs/awkward_fam_photos/bookends.jpg',
+				bufftans = 'imgs/awkward_fam_photos/bufftans.jpg',
+				centaur = 'imgs/awkward_fam_photos/centaur.jpg',
+				headpile = 'imgs/awkward_fam_photos/headpile.jpg',
+				hearmenow = 'imgs/awkward_fam_photos/hearmenow.jpg',
+				$left = $('.left'),
+				$right = $('.right');
+
+			
+			$body
+				.bind({
+					'familyCrude': function(e, files){
+						var fLen = files.length,
+							i, frags = [];
+							
+						for(i=0; i<files.length; i++){
+							frags.push('<li><img width=300 src="'+files[i]+'" alt="awkward family photos" /></li>');
+						}
+						
+						$left.html(frags.join('')).fadeIn().removeClass('hidden');
+						
+					},
+					'familyFeud': function(e){
+						var $target;
+						$right.fadeIn().removeClass('hidden');
+					}
+					
+				})
+				.image_eventer({
+					collections: [
+						{files: [bighead, bookends, bufftans, centaur, headpile, hearmenow], completedEvent: 'familyCrude'},
+						{files: $right, completedEvent: 'familyFeud'}
+					]
+				});
+		});
+		
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>Multiple collections w/ custom events</h1>
+		
+		<p>Loading multiple sets of images in order. Some exist in the DOM, some do not.</p>
+		
+		<div class="breaker">
+			<ul class="left hidden">
+			</ul>
+		
+			<ul class="right hidden">
+				<li><img width=300 src="imgs/awkward_fam_photos/laundry.jpg" alt="awkward family photos" /></li>
+				<li><img width=300 src="imgs/awkward_fam_photos/magic.jpg" alt="awkward family photos" /></li>
+				<li><img width=300 src="imgs/awkward_fam_photos/nosepicker.jpg" alt="awkward family photos" /></li>
+				<li><img width=300 src="imgs/awkward_fam_photos/scaryhead.jpg" alt="awkward family photos" /></li>
+				<li><img width=300 src="imgs/awkward_fam_photos/straddle.jpg" alt="awkward family photos" /></li>
+				<li><img width=300 src="imgs/awkward_fam_photos/winning.jpg" alt="awkward family photos" /></li>				
+			</ul>
+		</div>
+		
+		<br/><br/>
+		
+		<p>Our [0] point in our collections array will be loaded first. After that our [1] point in our collections array will be loaded.</p>
+		<p>Each collection will fire it's own event.</p>
+		
+		<code>
+		var $body = $('body'),<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;bighead = 'imgs/awkward_fam_photos/bighead.jpg',<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;bookends = 'imgs/awkward_fam_photos/bookends.jpg',<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;bufftans = 'imgs/awkward_fam_photos/bufftans.jpg',<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;centaur = 'imgs/awkward_fam_photos/centaur.jpg',<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;headpile = 'imgs/awkward_fam_photos/headpile.jpg',<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;hearmenow = 'imgs/awkward_fam_photos/hearmenow.jpg',<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$left = $('.left'),<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$right = $('.right');<br/><br/>
+
+		
+		$body<br/>
+		&nbsp;&nbsp;.bind({<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;'familyCrude': function(e, files){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var fLen = files.length,<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i, frags = [];<br/><br/>
+					
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(i=0; i&#60;files.length; i++){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frags.push('&#60;li&#62;&#60;img width=300 src="'+files[i]+'" alt="awkward family photos" /&#62;&#60;/li&#62;');<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>
+				
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$left.html(frags.join('')).fadeIn().removeClass('hidden');<br/><br/>
+				
+		&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;'familyFeud': function(e){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$right.fadeIn().removeClass('hidden');<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>
+			
+		})<br/>
+		&nbsp;&nbsp;.image_eventer({<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;collections: [<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files: [bighead, bookends, bufftans, centaur, headpile, hearmenow],<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;completedEvent: 'familyCrude'<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files: $right,<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;completedEvent: 'familyFeud'<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+		&nbsp;&nbsp;});<br/>
+		</code>
+		
+	</div>
+	
+</body>
+</html>

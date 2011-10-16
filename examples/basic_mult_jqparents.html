@@ -29,9 +29,8 @@
 
 			
 			$body
-				.bind('image_eventer::imagesLoadComplete', function(e, files){
-					var fLen = files.length,
-						$target;
+				.bind('image_eventer::imagesLoadComplete', function(e){
+					var $target;
 					
 					if($left.hasClass('hidden')){
 						$target = $left;
@@ -39,7 +38,7 @@
 						$target = $right;
 					}
 					
-					$target.removeClass('hidden').fadeIn();
+					$target.fadeIn().removeClass('hidden');
 				})
 				.image_eventer({
 					collections: [
@@ -56,7 +55,7 @@
 	<div id="wrapper">
 		<h1>Mutliple jQ parents</h1>
 		
-		<p>Loading multiple sets of images in a particular order is easy. Pass 'files' (or whatever makes sense to you) as the second argument in your handler fn. With this second argument you get back <em>EXACTLY</em> what was passed in your collections, but in an array of file locations. This will allow you to manipulate the DOM as you wish at that point.</p>
+		<p>Loading multiple sets of images in order that already exist in the DOM</p>
 		
 		<div class="breaker">
 			<ul class="left hidden">
@@ -77,40 +76,27 @@
 		
 		<code>
 		var $body = $('body'),<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;accordion = 'imgs/holidays/accordion.jpg',<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;cycle = 'imgs/holidays/cycle.jpg',<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;gothing = 'imgs/holidays/gothing.jpg',<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;smoking1 = 'imgs/holidays/smoking1.jpg',<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;smoking2 = 'imgs/holidays/smoking2.jpg',<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;stalking = 'imgs/holidays/stalking.jpg',<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;treehats = 'imgs/holidays/treehats.jpg',<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;$left = $('.left'),<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;$right = $('.right');<br/><br/>
 
 		
 		$body<br/>
-		&nbsp;&nbsp;.bind('image_eventer::imagesLoadComplete', function(e, files){<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;var fLen = files.length,<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liBuffer = [],<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$target;<br/><br/>
+		&nbsp;&nbsp;.bind('image_eventer::imagesLoadComplete', function(e){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;var $target;<br/><br/>
 					
-		&nbsp;&nbsp;if($left.find('li').length === 0){<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;$target = $left;<br/>
-		&nbsp;&nbsp;} else {<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;$target = $right;<br/>
-		&nbsp;&nbsp;}<br/><br/>
-				
-		&nbsp;&nbsp;&nbsp;&nbsp;for(var i=0; i&#60;fLen; i++){<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liBuffer.push('&#60;li style="height: 500px"&#62;&#60;img width=300 src="'+files[i]+'" alt="holiday rad-ness" /&#62;&#60;/li&#62;');<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;if($left.hasClass('hidden')){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$target = $left;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$target = $right;<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>
 				
-		&nbsp;&nbsp;&nbsp;&nbsp;$target.append(liBuffer.join(''));<br/><br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$target.removeClass('hidden').fadeIn();<br/><br/>
 				
 		&nbsp;&nbsp;})<br/>
 		&nbsp;&nbsp;.image_eventer({<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;collections: [<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[accordion, cycle, gothing, smoking1],<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[smoking2, stalking, treehats]<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$left,<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$right<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
 		&nbsp;&nbsp;});<br/>
 		</code>
