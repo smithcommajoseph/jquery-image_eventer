@@ -10,7 +10,7 @@
 
 (function($){
 	
-	var ver = '0.3',
+	var ver = '0.4',
 		DEFAULT_EVENT = 'image_eventer::imagesLoadComplete';
 	
 	function _setQueue(a, b){
