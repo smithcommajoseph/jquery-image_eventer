@@ -38,13 +38,28 @@
 		$(document).ready(function(){
 
 			var $body = $('body'),
-				$ul = $('ul');
+				$left = $('.left'),
+				$right = $('.right');
+
 			
 			$body
 				.bind('image_eventer::imagesLoadComplete', function(e){
-					$ul.fadeIn().removeClass('hidden');
+					var $target;
+					
+					if($left.hasClass('hidden')){
+						$target = $left;
+					} else {
+						$target = $right;
+					}
+					
+					$target.fadeIn().removeClass('hidden');
 				})
-				.image_eventer($ul);
+				.image_eventer({
+					collections: [
+						$left,
+						$right
+					]
+				});
 		});
 		
 	</script>
@@ -52,30 +67,52 @@
 
 <body>
 	<div id="wrapper">
-		<h1>Passing a jQuery object</h1>
+		<h1>Mutliple jQ parents</h1>
 		
-		<p>You can also target images you want to load by passing a jQuery object that contains img tags.</p>
+		<p>Loading multiple sets of images in order that already exist in the DOM</p>
 		
-		<ul class="hidden">
-			<li><img width=800 src="imgs/ponies/alien.jpg" alt="pony" /></li>
-			<li><img width=800 src="imgs/ponies/Chewbacca.jpg" alt="pony" /></li>
-			<li><img width=800 src="imgs/ponies/Cthulhu.jpg" alt="pony" /></li>
-			<li><img width=800 src="imgs/ponies/Edward-Scissorhands.jpg" alt="pony" /></li>
-		</ul>
+		<div class="breaker">
+			<ul class="left hidden">
+				<li><img width=300 src="imgs/old_skool/base.jpg" alt="oldskool examples" /></li>
+				<li><img width=300 src="imgs/old_skool/hammertime.jpg" alt="oldskool examples" /></li>
+				<li><img width=300 src="imgs/old_skool/rofl.jpg" alt="oldskool examples" /></li>
+			</ul>
+		
+			<ul class="right hidden">
+				<li><img width=300 src="imgs/old_skool/see.jpg" alt="oldskool examples" /></li>
+				<li><img width=300 src="imgs/old_skool/vtec.jpg" alt="oldskool examples" /></li>				
+			</ul>
+		</div>
 		
 		<br/><br/>
 		
-		<p>When using this method <em>All</em> node items that are imgs will be selected for 'preloading'. As you'll notice, this method allows the same amount of control as passing an array of urls to your images, but allows you to write much less code.</p>
+		<p>Our [0] point in our collections array will be loaded first. After that our [1] point in our collections array will be loaded.</p>
 		
 		<code>
 		var $body = $('body'),<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;$ul = $('ul');<br/><br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$left = $('.left'),<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$right = $('.right');<br/><br/>
+
 		
 		$body<br/>
 		&nbsp;&nbsp;.bind('image_eventer::imagesLoadComplete', function(e){<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;$ul.fadeIn().removeClass('hidden');<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;var $target;<br/><br/>
+					
+		&nbsp;&nbsp;&nbsp;&nbsp;if($left.hasClass('hidden')){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$target = $left;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$target = $right;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>
+				
+		&nbsp;&nbsp;&nbsp;&nbsp;$target.removeClass('hidden').fadeIn();<br/><br/>
+				
 		&nbsp;&nbsp;})<br/>
-		&nbsp;&nbsp;.image_eventer($ul);
+		&nbsp;&nbsp;.image_eventer({<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;collections: [<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$left,<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$right<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+		&nbsp;&nbsp;});<br/>
 		</code>
 		
 	</div>

@@ -41,10 +41,10 @@
 				$ul = $('ul');
 			
 			$body
-				.bind('image_eventer::imagesLoadComplete', function(e){
+				.bind('funkyPonies', function(e){
 					$ul.fadeIn().removeClass('hidden');
 				})
-				.image_eventer($ul);
+				.image_eventer($ul, 'funkyPonies');
 		});
 		
 	</script>
@@ -52,30 +52,30 @@
 
 <body>
 	<div id="wrapper">
-		<h1>Passing a jQuery object</h1>
+		<h1>jQuery object parent w/ custom event</h1>
 		
-		<p>You can also target images you want to load by passing a jQuery object that contains img tags.</p>
+		<p>As we've seen, you target images by passing a jQuery parent. This is the same as previous examples, but with a custom event.</p>
 		
 		<ul class="hidden">
-			<li><img width=800 src="imgs/ponies/alien.jpg" alt="pony" /></li>
-			<li><img width=800 src="imgs/ponies/Chewbacca.jpg" alt="pony" /></li>
-			<li><img width=800 src="imgs/ponies/Cthulhu.jpg" alt="pony" /></li>
-			<li><img width=800 src="imgs/ponies/Edward-Scissorhands.jpg" alt="pony" /></li>
+			<li><img width=500 src="imgs/ponies/han-solo-carbonite.jpg" alt="pony" /></li>
+			<li><img width=500 src="imgs/ponies/Jack-Skeleton.jpg" alt="pony" /></li>
+			<li><img width=500 src="imgs/ponies/Pans-Labyrinth.jpg" alt="pony" /></li>
+			<li><img width=500 src="imgs/ponies/Storm-Trooper.jpg" alt="pony" /></li>
 		</ul>
 		
 		<br/><br/>
 		
-		<p>When using this method <em>All</em> node items that are imgs will be selected for 'preloading'. As you'll notice, this method allows the same amount of control as passing an array of urls to your images, but allows you to write much less code.</p>
+		<p>When using this method <em>All</em> node items that are imgs will be selected for 'preloading'.</p>
 		
 		<code>
 		var $body = $('body'),<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;$ul = $('ul');<br/><br/>
 		
 		$body<br/>
-		&nbsp;&nbsp;.bind('image_eventer::imagesLoadComplete', function(e){<br/>
+		&nbsp;&nbsp;.bind('funkyPonies', function(e){<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;$ul.fadeIn().removeClass('hidden');<br/>
 		&nbsp;&nbsp;})<br/>
-		&nbsp;&nbsp;.image_eventer($ul);
+		&nbsp;&nbsp;.image_eventer($ul, 'funkyPonies');
 		</code>
 		
 	</div>

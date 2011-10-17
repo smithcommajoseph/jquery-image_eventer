@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 	<title>Image Eventer Examples</title>
 
@@ -19,6 +19,20 @@
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.js"></script>
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-26194503-2']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -47,7 +61,7 @@
 
 <body>
 	<div id="wrapper">
-		<h1>Basic single array w/ custom Event</h1>
+		<h1>Single array w/ custom event</h1>
 		
 		<p>This example is functionally the same as the <a href="basic_single_array.html">last example</a>, however, as you can see below you can pass your own event name as the second argument to $.image_eventer. In this example we're using 'shama_lama_ding_dong' (passed as the var cEvent).</p>
 		
