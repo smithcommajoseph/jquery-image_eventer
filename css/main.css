@@ -65,7 +65,7 @@ table {
 /*Style*/
 html {
   width: 100%;
-  background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 700, color-stop(0%, #47BBFF), color-stop(100%, #0E84CC));
+  background-image: -webkit-gradient(radial, 50% 1%, 0, 50% 1%, 700, color-stop(0%, #47BBFF), color-stop(100%, #0E84CC));
   background-image: -moz-radial-gradient(top center, circle, #47BBFF 0%, #0E84CC 700px);
   background-image: radial-gradient(top center, circle, #47BBFF 0%, #0E84CC 700px);
   padding-top: 10px;
