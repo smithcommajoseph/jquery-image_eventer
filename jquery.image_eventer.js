@@ -10,7 +10,7 @@
 
 (function($){
 	
-	var ver = '0.3',
+	var ver = '0.4',
 		DEFAULT_EVENT = 'image_eventer::imagesLoadComplete';
 	
 	function _setQueue(a, b){
@@ -26,7 +26,7 @@
 					tQueue.push({files: a, completedEvent: cEvent});
 				}
 				else {
-					//we have a map, do map stuff...
+					//we have a object, do object stuff...
 					if(typeof a.collections !== 'undefined' && _isArray(a.collections)){
 						colLen = a.collections.length;
 						
@@ -36,22 +36,25 @@
 								tQueue.push({files: a.collections[i], completedEvent: cEvent});
 							} 
 							// jq parent
-							// else if($.contains(a.collections[i].files, document.img)){
-							// 			console.log('jq parent');
-							// 			iArr = _internalArr($(a.collections[i].files).find('img'));
-							// 			tQueue.push({files: iArr, completedEvent: cEvent});
-							// 		}
+							else if(_isjQWrapper($(a.collections[i]))){
+								iArr = _internalArr($(a.collections[i]).find('img'));
+								tQueue.push({files: iArr, completedEvent: cEvent});
+							}
 							//formatted 1 to 1
 							else {
 								if(typeof a.collections[i].completedEvent !== 'undefined'){
 									cEvent = a.collections[i].completedEvent;
 								}
-								tQueue.push({files: a.collections[i].files, completedEvent: cEvent});
+								if( _isjQWrapper($(a.collections[i].files))){
+									iArr = _internalArr($(a.collections[i].files).find('img'));
+									tQueue.push({files: iArr, completedEvent: cEvent});
+								}else{
+									tQueue.push({files: a.collections[i].files, completedEvent: cEvent});
+								}
 							}
 						}
-						
-					//if we have a single jq parent
 					} else {
+						//if we have a single jq parent
 						if($(a).find('img').length > 0){
 							iArr = _internalArr($(a).find('img'));
 							tQueue.push({files: iArr, completedEvent: (b !== undefined && typeof b == 'string') ? b : DEFAULT_EVENT});
@@ -85,12 +88,12 @@
 
 	}
 	
-	// function _addToQue(files, completedEvent){
-	// 	tQueue.push({files: files, completedEvent: completedEvent});
-	// }
-	
 	function _isArray(a){
 		return a.constructor == (new Array).constructor;
+	}
+	
+	function _isjQWrapper(a){
+		return a.find('img').length > 0;
 	}
 	
 	function _internalArr($collection){
