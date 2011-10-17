@@ -17,6 +17,9 @@ If you are using Image Eventer and have a feature request or bug report, please 
 
 ##Version History
 
+####1.0beta5
+- General Optimization
+
 ####1.0beta4
 - Fixed multiple jQuery wrapper bug
 
