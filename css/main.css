@@ -65,9 +65,9 @@ table {
 /*Style*/
 html {
   width: 100%;
-  background-image: -webkit-gradient(radial, 50% 1%, 0, 50% 1%, 700, color-stop(0%, #47BBFF), color-stop(100%, #0E84CC));
-  background-image: -moz-radial-gradient(top center, circle, #47BBFF 0%, #0E84CC 700px);
-  background-image: radial-gradient(top center, circle, #47BBFF 0%, #0E84CC 700px);
+  background-image: -webkit-gradient(radial, 50% 1%, 0, 50% 1%, 700, color-stop(0%, #44B4F5), color-stop(100%, #0D7DC2));
+  background-image: -moz-radial-gradient(top center, circle, #44B4F5 0%, #0D7DC2 700px);
+  background-image: radial-gradient(top center, circle, #44B4F5 0%, #0D7DC2 700px);
   padding-top: 10px;
   font-family: Helvetica, sans-serif;
 }
@@ -97,7 +97,7 @@ html {
 	color: white;
 	text-shadow: #303810 1px 1px 3px; 
 	font: 50px 'Paytone One', arial, serif;
-	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.5)));
+	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.85)));
 	}
 #jie-main {	
 	display: block;
@@ -145,11 +145,11 @@ html {
 	font: 19px 'Paytone One', arial, serif;
 	}
 #downloads a:hover span{
-	color: #9c53c9;
+	color: #C2760D;
 }
 
 #main h2 { 
-	border-bottom: 3px solid #86D3FF;
+	border-bottom: 3px solid #754400;
 	color: #262d0b;
 	font-size: 20px;
 	font-weight: bold;
@@ -199,7 +199,7 @@ pre.codeblock{
 	-khtml-border-radius: 7px;
 	border-radius: 7px;
 	
-	color: #9c53c9;
+	color: #8E63A7;
 	padding:20px;
 	font-size:16px;
 }
